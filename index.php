@@ -13,7 +13,7 @@
      * * @link http://dllido.al.nisu.org/P0/holaMundo.php
      * */
 
-require_once('./core/principal.php');
+
 require_once('./core/view.php') ;
 
 /*evitar codigo malicioso*/
