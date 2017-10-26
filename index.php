@@ -22,15 +22,15 @@ function _H($cadena){echo htmlspecialchars($cadena,ENT_QUOTES);}
 //variable para paso de parámetros a las plantillas.
 $data=array();
 //plantilla central por defecto del portal
-$central="./phtml/centralForm.phtml";
+$central='./principal.phtml';
 
 
 if (isset($_REQUEST['module']) ){
   $modulo=$_REQUEST["module"];
   
   switch ($modulo) {
-    case "user":
-      require_once('./modules/shx_shop/shop.php');
+    case "shop":
+      $central='./modules/shx_shop/phtml/shop.phtml';
       break;
     default:
       $data["error"]="Modulo no permitido";
