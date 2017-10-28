@@ -1,6 +1,6 @@
 <?php
 
-echo("Bienvenido a la tienda");
+$central='./modules/shx_shop/phtml/shop.phtml';
 
 ?>
 

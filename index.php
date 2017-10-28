@@ -30,7 +30,10 @@ if (isset($_REQUEST['module']) ){
   
   switch ($modulo) {
     case "shop":
-      $central='./modules/shx_shop/phtml/shop.phtml';
+      require_once("./modules/shx_shop/shop.php");
+      break;
+    case "game":
+      require_once("./modules/shx_game/game.php");
       break;
     default:
       $data["error"]="Modulo no permitido";
