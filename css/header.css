@@ -1,0 +1,43 @@
+
+.navRoot{
+    display: flex;
+}
+
+header {
+    z-index: 500;
+    top: 10px;
+    left: 0;
+    right: 0;
+
+}
+
+header li{
+    list-style: none;
+}
+
+.navSection.logo{
+    flex-grow: 1;
+}
+
+.navSection.primary{
+    display: none;
+    font-weight: 600;
+}
+
+@media (min-width: 670px){
+    .navSection.primary{
+        display: flex;
+    }
+}
+
+.navSection.primary{
+    justify-content: center;
+}
+
+
+.rootLink{
+    padding: 0 25px;
+    font-size: 17px;
+    line-height: 50px;
+    color: #DFDDF2;
+}

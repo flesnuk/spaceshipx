@@ -1,129 +1,68 @@
-
-
-body
-{
-    font-family: arial;
-
-    background-image: url('../img/fondo.png');
-	max-width: 1000px;
-    margin: 0 auto; /* Centrado */
+/* PALETTE:
+#40FFDC  bright turquoise
+#00A9D4  cloudy cyan 
+#1C3166  dark blue 
+#240047  dark purple
+#1C0021  almost black
+*/
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #1C0021;
+    font-family: Camphor,Open Sans,Segoe UI,sans-serif;
+    color: #DFDDF2;
 }
 
-header
-{ 
-    min-height: 100px;
-    margin-bottom: 5px 5px 5px 5px;
-    padding: 5px 5px 5px 5px;
+a:-webkit-any-link {
+    color: #DFDDF2;
 }
 
-	
-
-
-nav,
-footer
-{
-    clear: both;
-    margin-bottom: 10px;
-    padding: 4px;
-    text-align: center;
-    background-color: #914bb9;
-    font-size: 80%;
-}
-
-section
-{
- 
-    width: 45%;
-    min-width: 300px;
-    margin: 0px 0px 15px 0px;
-    padding: 15px 5px 5px 5px;
-    background-color: beige;
-    box-shadow: 3px 3px 3px 3px rgba(50, 50, 50, .75);
-}
-
-h1
-{
-    font-size: 120%;
-    margin-top: 0;
-    margin-bottom: 10px;
-    color: #666;
-}
-
-h2
-{
-    font-weight: bold;
-    font-style: italic;
-    margin-top: 0;
-    margin-bottom: 5px;
-}
-
-
-#logo
-{ 
-    float: left;
-    min-with:80px; 
-	width-min: 20%;
-}
-
-#eslogan
-{
-	float: left;
-    margin: 5% 5%;
-    color: #914bb9;
-}
-#registro
-{
-    position: absolute;
-    top: 5px;
-    right: 10%;
-}
-
-
-#registro a:hover
-{
-    color: blue;
-}
-
-
-nav a
-{
-    font-weight: bold;
+a {
     text-decoration: none;
-    color: white;
 }
 
-nav a:hover
-{
-    color: #aaaaaa;
+.container{
+    max-width: 1040px;
+    margin: 0 auto;
+}
+
+#intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    margin: 10px 10px;
+    position:fixed;
+    top:0;
+    left:0;
+
 }
 
 
-nav li
-{
-    display: inline;
-    padding: 0 40px 0 0;
+#intro h1 {
+    font-size: 32px;
+    font-weight: 400;
 }
 
-
-
-
-section#blog
-{
-    float: right;
+@media (min-width: 880px){
+    #intro h1 {
+        font-size: 40px;
+    }
 }
 
-.valoracion-usuario
-{
-    font-style: italic;
+#intro .buttons{
+    margin-top: 20px;
 }
 
-.botonleermas
-{
-    font-size: 80%;
-    font-weight: bold;
-    margin-bottom: 10px;
-    text-align: right;
-}
-.izq {float:left;margin-top:0px;  text-align:left; }
-.der {margin-top:0px; text-align:right;
+#intro .button{
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: 600;
+    background: #00A9D4;
+    color: #1C0021;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 14px;
 }
