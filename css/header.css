@@ -4,11 +4,13 @@
 }
 
 header {
+    position: absolute;
     z-index: 500;
     top: 10px;
     left: 0;
     right: 0;
-
+    margin: 0 auto;
+    max-width: 1040px;
 }
 
 header li{
@@ -34,10 +36,31 @@ header li{
     justify-content: center;
 }
 
+.navSection.secondary{
+    display: none;
+}
+
+@media (min-width: 470px){
+    .navSection.secondary{
+        display: flex;
+    }
+}
 
 .rootLink{
     padding: 0 25px;
     font-size: 17px;
     line-height: 50px;
     color: #DFDDF2;
+}
+
+.highlight {
+    transition: all 0.2s;
+    border-bottom: 2px solid white;
+    position: absolute;
+    top: 0;
+    background: #240047;
+    left: 0;
+    z-index: -1;
+    border-radius: 4px;
+    display: block;
 }

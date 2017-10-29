@@ -35,6 +35,9 @@ if (isset($_REQUEST['module']) ){
     case "game":
       require_once("./modules/shx_game/game.php");
       break;
+    case "user":
+      require_once("./modules/shx_user/user.php");
+      break;
     default:
       $data["error"]="Modulo no permitido";
       $central="./phtml/error.phtml";
