@@ -51,7 +51,7 @@ class DBModel
     function get_results_from_query($data_db = array())
     {
         $this->open_connection();
-       #echo $this->query,$data;
+        #echo $this->query,$data;
         try {
             $consult=$this->conn->prepare($this->query);
             $consult->execute($data_db);

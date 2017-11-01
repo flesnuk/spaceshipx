@@ -42,7 +42,14 @@ switch ($action) {
 
             $hash = $user["password"];
             if (password_verify($_REQUEST["passwd"], $hash)) {
-                
+                $_SESSION["username"] = $user["username"];
+                $_SESSION["is_admin"] = $user["admin"];
+                if ($user["admin"]){
+                    header('Location: ./?module=admin&action=list');
+                } else {
+                    header('Location: ./');
+                }
+                die();
             } else {
                 $data["error"] = "Contraseña invalida";
             }

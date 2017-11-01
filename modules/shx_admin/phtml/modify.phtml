@@ -1,16 +1,14 @@
 <main>
     <div class="centrado" id="login">
         <form action="" method="post" id="login-box">
-            <h3>Nuevo usuario</h3>            
+            <h3>Modificar usuario</h3>            
             <label for="username">Nombre de usuario:</label>
-            <input type="text" name="username" id="username">
+            <input type="text" name="username" id="username" value="<?= $data['username'] ?>">
             <label for="name">Nombre:</label>
-            <input type="text" name="name" id="name">
+            <input type="text" name="name" id="name" value="<?= $data['name'] ?>">
             <label for="email">Email:</label>
-            <input type="text" name="email" id="email">
-            <label for="passwd">Contraseña:</label>
-            <input type="password" name="passwd" id="passwd">
-            <input type="submit" value="Registrate">
+            <input type="text" name="email" id="email" value="<?= $data['email'] ?>">
+            <input type="submit" value="Actualizar">
             <? if(isset($data["error"])): ?>
                 <span class="error-msg"><?= $data["error"] ?></span>
             <? endif; ?>

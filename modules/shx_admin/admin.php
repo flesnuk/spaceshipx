@@ -10,7 +10,8 @@
  * * @version 1
  * * @link http://dllido.al.nisu.org/P0/holaMundo.php
  * */
-  
+require_once("./modules/shx_guard/admin_guard.php");
+
 global $data;
 global $error;
 
@@ -31,17 +32,9 @@ switch ($action) {
         $central="./modules/shx_admin/phtml/upload_ship.phtml";
         //move_uploaded_file($_FILES["imagen"]['tmp_name'],$destino);
         break;
-    case "register":
-        $nombre=$_REQUEST['userName'];
-        $BaseDatos->query="INSERT INTO     usuarios (nombre) VALUES ('$nombre') ";
-        $BaseDatos->execute_single_query();
-        $data["error"]= $BaseDatos->mensaje;
-        $central="./phtml/error.phtml";
-      
-        break;
     case "delete":
         $id = $_REQUEST['id'];
-        $BaseDatos->query="DELETE FROM usuarios WHERE id=$id";
+        $BaseDatos->query="DELETE FROM usuario WHERE id=$id";
         $BaseDatos->execute_single_query();
         $data["error"]= $BaseDatos->mensaje;
         if ($data["error"] != "") {
@@ -50,9 +43,22 @@ switch ($action) {
         break;
     case "mod":
         $id = $_REQUEST['id'];
-        $BaseDatos->query="SELECT * FROM usuarios WHERE id=$id";
-        //$BaseDatos->execute_single_query();
-        var_dump($BaseDatos->get_results_from_query());
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $username = $_REQUEST["username"];
+            $name = $_REQUEST["name"];
+            $email = $_REQUEST["email"];
+            $BaseDatos->query="UPDATE usuarios SET username='$username', name='$name', email='$email' WHERE id=$id";
+            $BaseDatos->execute_single_query();
+            header('Location: ./?module=admin&action=list');
+            die();
+        } else {
+            $BaseDatos->query="SELECT * FROM usuarios WHERE id=$id";
+            $user = $BaseDatos->get_results_from_query()[0];
+            $data["username"]=$user["username"];
+            $data["name"]=$user["name"];
+            $data["email"]=$user["email"];
+            $central="./modules/shx_admin/phtml/modify.phtml";
+        }
         break;
     case "list":
         $BaseDatos->query="SELECT     *  FROM        usuarios";
