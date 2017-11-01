@@ -48,7 +48,7 @@ a {
 }
 
 #login-box {
-    min-width: 300px;
+    max-width: 300px;
     min-height: 400px;
     background: #DFDDF2; 
     color: #111111;
@@ -67,7 +67,7 @@ a {
     align-self: flex-start;
 }
 
-#login-box input[type="button"] {
+#login-box input[type="submit"] {
     margin: 20px 22px;
     padding: 10px 12px;
     font-size: 16px;
@@ -79,7 +79,8 @@ a {
     cursor: pointer;
 }
 
-#login-box input[type="text"], #login-box input[type="password"] {
+#login-box input[type="text"], 
+#login-box input[type="password"] {
     display: block;
     margin: 0;
     width: 80%;
@@ -90,7 +91,8 @@ a {
     border: none;
 }
 
-#login-box input[type="text"]:focus, #login-box input[type="password"]:focus {
+#login-box input[type="text"]:focus,
+#login-box input[type="password"]:focus {
     outline: none;
 }
 
@@ -100,6 +102,13 @@ a {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 6px 2px;
+}
+
+.error-msg {
+    font-size: 14px;
+    color: #FF1111;
+    padding: 2px 6px;
 }
 
 #intro h1 {

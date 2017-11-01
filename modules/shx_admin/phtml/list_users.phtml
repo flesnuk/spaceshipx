@@ -1,0 +1,25 @@
+<main class="content">
+    <div class="container">
+        <h1>Users</h1>
+        <table border="1">
+            <thead>
+                <th>user</td>
+                <th>email</td>
+                <th>pass</td>
+                <th>Mod.</td>
+                <th>Del.</td>
+            </thead>
+            <tbody>
+            <? foreach ($data['users'] as $user): ?>
+            <tr>
+                <td><?= $user['username']?></td>
+                <td><?= $user['email']?></td>
+                <td><?= $user['password']?></td>
+                <td><a href="?module=admin&action=mod&id=<?= $user['id'] ?>">&#9998;</a></td>
+                <td><a href="?module=admin&action=delete&id=<?= $user['id'] ?>">&#10006;</a></td>
+            </tr>
+            <? endforeach; ?>
+            </tbody>
+        </table>
+    </div>    
+</main>

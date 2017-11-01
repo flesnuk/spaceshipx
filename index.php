@@ -13,36 +13,44 @@
      * * @link http://dllido.al.nisu.org/P0/holaMundo.php
      * */
 
-
+session_start([
+  'cookie_lifetime' => 360,
+]);
+require_once('./core/db_model.php');
 require_once('./core/view.php') ;
 
 /*evitar codigo malicioso*/
-function _H($cadena){echo htmlspecialchars($cadena,ENT_QUOTES);}
+function _H($cadena)
+{
+    echo htmlspecialchars($cadena, ENT_QUOTES);
+}
 
+$BaseDatos=new DBModel();
 //variable para paso de parámetros a las plantillas.
 $data=array();
 //plantilla central por defecto del portal
 $central='./principal.phtml';
 
 
-if (isset($_REQUEST['module']) ){
-  $modulo=$_REQUEST["module"];
+if (isset($_REQUEST['module'])) {
+    $modulo=$_REQUEST["module"];
   
-  switch ($modulo) {
-    case "shop":
-      require_once("./modules/shx_shop/shop.php");
-      break;
-    case "game":
-      require_once("./modules/shx_game/game.php");
-      break;
-    case "user":
-      require_once("./modules/shx_user/user.php");
-      break;
-    default:
-      $data["error"]="Modulo no permitido";
-      $central="./phtml/error.phtml";
-  }
+    switch ($modulo) {
+        case "shop":
+            require_once("./modules/shx_shop/shop.php");
+            break;
+        case "game":
+            require_once("./modules/shx_game/game.php");
+            break;
+        case "user":
+            require_once("./modules/shx_user/user.php");
+            break;
+        case "admin":
+            require_once("./modules/shx_admin/admin.php");
+            break;
+        default:
+            $data["error"]="Modulo no permitido";
+            $central="./phtml/error.phtml";
+    }
 }
-retornarVista($central,$data);
-
-?>
+retornarVista($central, $data);
