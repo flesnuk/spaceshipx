@@ -39,7 +39,10 @@ switch ($action) {
         $data["error"]= $BaseDatos->mensaje;
         if ($data["error"] != "") {
             $central="./phtml/error.phtml";
-        }     
+        } else {
+            header('Location: ./?module=admin&action=list');
+            die();
+        }
         break;
     case "mod":
         $id = $_REQUEST['id'];

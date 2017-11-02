@@ -7,7 +7,16 @@ if (isset($_REQUEST['action'])) {
 switch ($action) {
     case "register":
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        
+        $username = $_REQUEST["username"]; // 0 < length <= 15 and not already taken
+        $name = $_REQUEST["name"]; // len < 100
+        $email = $_REQUEST["email"]; // maybe PHP has check_email? also len<100
+        // TODO: store error msg in $data["error-username"], $data["error-email"], etc
+        $passwd = password_hash($_REQUEST["passwd"], PASSWORD_BCRYPT); 
+        $BaseDatos->query="INSERT INTO usuarios (username, name, email, password) 
+                                        VALUES ('$username', '$name', '$email', '$passwd') ";
+        $BaseDatos->execute_single_query();
+        header('Location: ./');
+        die();
     } else {
         $central='./modules/shx_user/phtml/register.phtml';
     }
@@ -37,7 +46,7 @@ switch ($action) {
             }
 
             $user = $user[0];
-            
+            $data["username"] = $user["username"];
 
 
             $hash = $user["password"];

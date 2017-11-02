@@ -3,7 +3,7 @@
         <form action="" method="post" id="login-box">
             <h3>Bienvenido de nuevo</h3>
             <label for="username">Nombre de usuario:</label>
-            <input type="text" name="username" id="username">
+            <input type="text" name="username" id="username" value="<?= $data['username'] ?? '' ?>">
             <label for="passwd">Contraseña:</label>
             <input type="password" name="passwd" id="passwd">
             <input type="submit" value="Iniciar sesión">
