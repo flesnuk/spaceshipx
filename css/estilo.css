@@ -8,7 +8,9 @@
 body {
     display: flex;
     flex-direction: column;
-    background-color: #1C0021;
+    
+    background-image: url("../img/backimg.jpg");
+    background-size: 2000px 2000px;
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
     color: #DFDDF2;
     margin: 0px 0px;

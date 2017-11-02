@@ -20,7 +20,7 @@ $action="";
 $BaseDatos->query="CREATE TABLE IF NOT EXISTS usuarios (id INT(11) NOT NULL AUTO_INCREMENT,nombre VARCHAR(100), apellido VARCHAR(100), email VARCHAR(100), clave VARCHAR(25), PRIMARY KEY(id))";
 $BaseDatos->execute_single_query();
 echo $BaseDatos->mensaje;
-  
+$ships_img_dir="img/ships";  
   
 if (isset($_REQUEST['action'])) {
     $action=$_REQUEST['action'];
@@ -29,8 +29,12 @@ if (isset($_REQUEST['action'])) {
       
 switch ($action) {
     case "upload":
-        $central="./modules/shx_admin/phtml/upload_ship.phtml";
-        //move_uploaded_file($_FILES["imagen"]['tmp_name'],$destino);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            move_uploaded_file($_FILES["imagen"]['tmp_name'],$ships_img_dir.$_FILES["imagen"]["name"]);
+	} else {
+            $central="./modules/shx_admin/phtml/upload_ship.phtml";
+        }
+	
         break;
     case "delete":
         $id = $_REQUEST['id'];
