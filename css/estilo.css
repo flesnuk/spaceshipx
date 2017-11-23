@@ -5,6 +5,10 @@
 #240047  dark purple
 #1C0021  almost black
 */
+table {
+	background-color: #222222;
+}
+
 body {
     display: flex;
     flex-direction: column;
