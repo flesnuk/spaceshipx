@@ -12,9 +12,9 @@ table {
 body {
     display: flex;
     flex-direction: column;
-    
     background-image: url("../img/backimg.jpg");
     background-size: 2000px 2000px;
+   
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
     color: #DFDDF2;
     margin: 0px 0px;
@@ -53,7 +53,7 @@ a {
     min-height: 100vh;
 }
 
-#login-box {
+.box {
     max-width: 300px;
     min-height: 400px;
     background: #DFDDF2; 
@@ -63,17 +63,17 @@ a {
     align-items: center;
 }
 
-#login-box a {
+.box a {
     color: #111111;
     font-weight: bold;
 }
 
-#login-box label {
+.box label {
     margin: 13px 22px;
     align-self: flex-start;
 }
 
-#login-box input[type="submit"] {
+.box input[type="submit"] {
     margin: 20px 22px;
     padding: 10px 12px;
     font-size: 16px;
@@ -85,8 +85,8 @@ a {
     cursor: pointer;
 }
 
-#login-box input[type="text"], 
-#login-box input[type="password"] {
+.box input[type="text"], 
+.box input[type="password"] {
     display: block;
     margin: 0;
     width: 80%;
@@ -97,12 +97,12 @@ a {
     border: none;
 }
 
-#login-box input[type="text"]:focus,
-#login-box input[type="password"]:focus {
+.box input[type="text"]:focus,
+.box input[type="password"]:focus {
     outline: none;
 }
 
-#login-box #register {
+.box #register {
     flex-grow: 1;
     display:flex;
     flex-direction: column;
@@ -143,3 +143,6 @@ a {
     padding: 0 14px;
 }
 
+canvas{
+    border: 1px solid black;
+}

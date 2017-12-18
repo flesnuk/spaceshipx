@@ -14,7 +14,7 @@
      * */
 
 session_start([
-  'cookie_lifetime' => 360,
+  'cookie_lifetime' => 3600,
 ]);
 require_once('./core/db_model.php');
 require_once('./core/view.php') ;

@@ -20,7 +20,7 @@ $action="";
 $BaseDatos->query="CREATE TABLE IF NOT EXISTS usuarios (id INT(11) NOT NULL AUTO_INCREMENT,nombre VARCHAR(100), apellido VARCHAR(100), email VARCHAR(100), clave VARCHAR(25), PRIMARY KEY(id))";
 $BaseDatos->execute_single_query();
 echo $BaseDatos->mensaje;
-$ships_img_dir="img/ships";  
+$ships_img_dir="img/ships/";  
   
 if (isset($_REQUEST['action'])) {
     $action=$_REQUEST['action'];
