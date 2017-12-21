@@ -30,15 +30,28 @@ if (isset($_REQUEST['action'])) {
 switch ($action) {
     case "upload":
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            move_uploaded_file($_FILES["imagen"]['tmp_name'],$ships_img_dir.$_FILES["imagen"]["name"]);
-	} else {
+            $name = $_REQUEST['name'];
+            $descr = $_REQUEST['descr'];
+            $price = $_REQUEST['price'];
+            $health = $_REQUEST['health'];
+            $level = $_REQUEST['level'];
+            $type = $_REQUEST['type'];
+            $imagen = $_FILES["imagen"]["name"];
+            move_uploaded_file($_FILES["imagen"]['tmp_name'],$ships_img_dir.$imagen);
+            $BaseDatos->query="INSERT INTO naves (name, descr, price, health, level, type, image)
+                VALUES('$name','$descr',$price,$health,$level,$type,'$imagen')";
+            $BaseDatos->execute_single_query();
+            if ($data["error"] != "") {
+                $central="./phtml/error.phtml";
+            } 
+	    } else {
             $central="./modules/shx_admin/phtml/upload_ship.phtml";
         }
 	
         break;
     case "delete":
         $id = $_REQUEST['id'];
-        $BaseDatos->query="DELETE FROM usuario WHERE id=$id";
+        $BaseDatos->query="DELETE FROM usuarios WHERE id=$id";
         $BaseDatos->execute_single_query();
         $data["error"]= $BaseDatos->mensaje;
         if ($data["error"] != "") {

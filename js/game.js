@@ -23,7 +23,6 @@ var enemy2 = new Enemy(400, 400, 0);
 draw();
 function draw() {
     c.clearRect(0, 0, canvas.width, canvas.height);
-    requestAnimationFrame(draw);
     updateNavePos();
     c.beginPath();
     c.rect(navePosX - 20, navePosY - 20, 40, 40);
@@ -32,6 +31,7 @@ function draw() {
     c.closePath(); 
     enemy1.draw();
     enemy2.draw();
+    requestAnimationFrame(draw);
 }
 
 function updateNavePos(){
@@ -56,13 +56,22 @@ function updateNavePos(){
         bullets.push(bullet)
     }
     for(var index in bullets) { 
-        if (! bullets[index].out)
-            bullets[index].draw();
+        bullets[index].draw();
     }
 }
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
+document.addEventListener("mousedown", mouseDownHandler, false);
+document.addEventListener("mouseup", mouseUpHandler, false);
+
+function mouseDownHandler(e) {
+    shooting = true;
+}
+
+function mouseUpHandler(e) {
+    shooting = false;
+}
 
 function keyDownHandler(e) {
     if(e.keyCode == 87 || e.keyCode == 38) {
@@ -122,13 +131,13 @@ function Bullet(x, y, dx, dy){
     this.out = false;
 
     this.draw = function(){
-        if (x > canvas.width || y > canvas.height || x < 0 || y < 0){
-            out = true;
+        if (this.x > canvas.width || this.y > canvas.height || this.x < 0 || this.y < 0){
+            this.out = true;
         }
-        x += dx;
-        y += dy;
+        this.x += this.dx;
+        this.y += this.dy;
         c.beginPath();
-        c.arc(x, y, 8, 0, Math.PI * 2, false);
+        c.arc(this.x, this.y, 8, 0, Math.PI * 2, false);
         c.fillStyle = "red";
         c.fill();
         c.closePath();
@@ -148,9 +157,6 @@ function Enemy(x, y, dx, dy){
     this.speed = 1;
 
     this.draw = function(){
-        if (x > canvas.width || y > canvas.height || x < 0 || y < 0){
-            out = true;
-        }
         dx = (x-navePosX)
         dy = (y-navePosY)
         angle = Math.atan2(dy,dx) * 180 / Math.PI;
@@ -168,3 +174,13 @@ function Enemy(x, y, dx, dy){
         c.closePath();
     }
 }
+
+setInterval(function() {
+    for(var index in bullets) 
+        if (bullets[index].out == true){
+            delete bullets[index]
+            bullets.splice(index, 1);
+        }
+            
+    
+}, 2000)

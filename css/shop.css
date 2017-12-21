@@ -1,0 +1,45 @@
+.naves {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    margin: 10px;
+}
+
+.nave {
+    background-color: rgba(55, 55, 55, 0.5);
+    border-radius: 7px;
+    padding: 20px;
+}
+
+@media (max-width: 860px) {
+    .naves {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .naves {
+        grid-template-columns: 1fr;
+    }
+}
+
+.nave .name {
+    font-weight: 600;
+    font-size: 2.5em; 
+}
+
+.nave .price {
+    background-color: rgba(55, 55, 55, 0.8);
+    padding: 4px 10px;
+    font-weight: 500;
+    font-size: 1.3em;
+}
+
+.nave .type {
+    display: none;
+}
+
+.nave .h-ico {
+    display: inline;
+    margin-left: 3px;
+}
