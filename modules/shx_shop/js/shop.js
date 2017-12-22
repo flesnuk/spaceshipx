@@ -29,7 +29,7 @@ function main() {
             level.textContent = "Lv." + datos[i].level;
             descr.textContent = datos[i].descr;
             price.textContent = datos[i].price;
-            type.textContent = datos[i].type;
+            //type.textContent = datos[i].type;
             health.textContent = datos[i].health;
             image.src = `./img/ships/${datos[i].image}`;
 
