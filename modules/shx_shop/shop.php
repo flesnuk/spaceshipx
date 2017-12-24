@@ -1,10 +1,11 @@
 <?php
 
-if (isset($_REQUEST['action'])) {
-    $action=$_REQUEST['action'];
+if (isset($_REQUEST['vista'])) {
+    $vista=$_REQUEST['vista'];
 }
-switch ($action) {
-case "list":
+switch ($vista) {
+case "json":
+    header('Content-Type:application/json');
     $BaseDatos->query="SELECT * FROM naves";
     $naves = $BaseDatos->get_results_from_query();
     echo json_encode($naves);

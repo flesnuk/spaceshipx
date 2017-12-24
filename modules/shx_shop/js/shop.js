@@ -1,15 +1,12 @@
-function main() {
+var myInit = { method: 'GET'};  
+var urlNavesJSON = window.location.origin + "/"
+                + window.location.pathname.split("/")[1] 
+                + "/?module=shop&vista=json";
 
-    var datos = JSON.parse(`[{"id":"1","name":"aur","descr":"best ship until today","price":"100",
-    "health":"80","level":"10","type":"1","image":"Katou.jpg"},
-    {"id":"2","name":"argint","descr":"nice description bro, don't mind me","price":"10",
-    "health":"20","level":"5","type":"2","image":"Katou.jpg"},
-    {"id":"3","name":"bronz","descr":"what I should expect, this is the best I ever seen","price":"10",
-    "health":"20","level":"3","type":"2","image":"Katou.jpg"},
-    {"id":"4","name":"hydrogen","descr":"I should use lorem instead of writing like an idiot","price":"10",
-    "health":"20","level":"1","type":"2","image":"Katou.jpg"}]`);
+function main(datos) {
 
-    if (document.querySelector('template').content) {
+    // comprobar que el navegador soporta templates
+    if (document.querySelector('template').content) { 
         
         var t = document.querySelector('template');
         var target = document.querySelector(".naves");
@@ -39,5 +36,16 @@ function main() {
 
     }
 }
-main();
-//document.addEventListener("DOMContentLoaded", function (){main()});
+
+var myRequest = new Request(urlNavesJSON, myInit);
+fetch(myRequest)
+.then( function(response) {
+    return response.json();    
+})
+.then ( function(json){
+    console.log(json);    
+    main(json);
+})
+.catch( function(error) {
+    console.error(error);
+});
