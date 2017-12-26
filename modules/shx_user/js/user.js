@@ -1,0 +1,1 @@
+loadFragment(document.getElementById("register"));

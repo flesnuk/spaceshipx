@@ -39,3 +39,7 @@ window.addEventListener("optimizedResize", function () {
     highlight.style.display = 'none';
     highlight.style.transform = 'translate(0px, 0px)';
 });
+
+triggers.forEach(e => {
+    e.addEventListener("click", loadFragment(e))
+});

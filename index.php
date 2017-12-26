@@ -30,6 +30,12 @@ $BaseDatos=new DBModel();
 $data=array();
 //plantilla central por defecto del portal
 $central='./principal.phtml';
+$jsImport='ge';
+
+function addJS($name) {
+    global $jsImport;
+    $jsImport .= "<script src='./modules/shx_$name/js/$name.js' async defer></script>";
+}
 
 
 if (isset($_REQUEST['module'])) {
@@ -38,12 +44,15 @@ if (isset($_REQUEST['module'])) {
     switch ($modulo) {
         case "shop":
             require_once("./modules/shx_shop/shop.php");
+            addJS("shop");
             break;
         case "game":
             require_once("./modules/shx_game/game.php");
+            addJS("game");
             break;
         case "user":
             require_once("./modules/shx_user/user.php");
+            addJS("user");
             break;
         case "admin":
             require_once("./modules/shx_admin/admin.php");

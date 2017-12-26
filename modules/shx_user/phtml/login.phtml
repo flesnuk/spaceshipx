@@ -1,16 +1,16 @@
-<main>
-    <div class="centrado" id="login">
-        <form action="" method="post" class="box">
-            <h3>Bienvenido de nuevo</h3>
-            <label for="username">Nombre de usuario:</label>
-            <input type="text" name="username" id="username" value="<?= $data['username'] ?? '' ?>">
-            <label for="passwd">Contraseña:</label>
-            <input type="password" name="passwd" id="passwd">
-            <input type="submit" value="Iniciar sesión">
-            <? if(isset($data["error"])): ?>
-                <span class="error-msg"><?= $data["error"] ?></span>
-            <? endif; ?>
-            <div id="register">¿Aún no estás registrado? <a href="?module=user&action=register"> Registrate</a></div>
-        </form>
-    </div>
-</main>
+
+<div class="centrado" id="login">
+    <form action="" method="post" class="box">
+        <h3>Bienvenido de nuevo</h3>
+        <label for="username">Nombre de usuario:</label>
+        <input type="text" name="username" id="username" value="<?= $data['username'] ?? '' ?>">
+        <label for="passwd">Contraseña:</label>
+        <input type="password" name="passwd" id="passwd">
+        <input type="submit" value="Iniciar sesión">
+        <? if(isset($data["error"])): ?>
+            <span class="error-msg"><?= $data["error"] ?></span>
+        <? endif; ?>
+        <div id="register">¿Aún no estás registrado? <a href="?module=user&action=register"> Registrate</a></div>
+    </form>
+</div>
+
