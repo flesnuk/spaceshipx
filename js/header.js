@@ -1,5 +1,4 @@
-triggers = document.getElementsByClassName('rootLink');
-triggers = [].slice.call(triggers)
+triggers = document.querySelectorAll('.rootLink');
 const highlight = document.createElement('span');
 
 highlight.classList.add('highlight');
@@ -14,6 +13,11 @@ function highlightLink() {
 }
 
 triggers.forEach(a => a.addEventListener('mouseenter', highlightLink));
+
+loadFragment(document.querySelector("#userLink"), user);
+loadFragment(document.querySelector("#shopLink"), shop);
+loadFragment(document.querySelector("#gameLink"), game);
+loadFragment(document.querySelector("#initLink"));
 
 (function () {
     var throttle = function (type, name, obj) {
@@ -38,8 +42,4 @@ triggers.forEach(a => a.addEventListener('mouseenter', highlightLink));
 window.addEventListener("optimizedResize", function () {
     highlight.style.display = 'none';
     highlight.style.transform = 'translate(0px, 0px)';
-});
-
-triggers.forEach(e => {
-    e.addEventListener("click", loadFragment(e))
 });

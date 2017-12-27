@@ -1,3 +1,4 @@
+function shop(){
 var myInit = { method: 'GET'};  
 var urlNavesJSON = window.location.origin + "/"
                 + window.location.pathname.split("/")[1] 
@@ -43,9 +44,10 @@ fetch(myRequest)
     return response.json();    
 })
 .then ( function(json){
-    console.log(json);    
     main(json);
 })
 .catch( function(error) {
     console.error(error);
 });
+
+}

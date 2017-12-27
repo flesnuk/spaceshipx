@@ -4,13 +4,9 @@
 }
 
 header {
-    position: absolute;
-    z-index: 500;
-    top: 10px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    max-width: 1040px;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    min-width: 320px;
 }
 
 header li{
@@ -19,6 +15,7 @@ header li{
 
 .navSection.logo{
     flex-grow: 1;
+    margin-right: 10px;
 }
 
 .navSection.primary{
@@ -26,7 +23,7 @@ header li{
     font-weight: 600;
 }
 
-@media (min-width: 670px){
+@media (min-width: 1025px){
     .navSection.primary{
         display: flex;
     }
@@ -40,9 +37,15 @@ header li{
     display: none;
 }
 
-@media (min-width: 470px){
+@media (min-width: 660px){
     .navSection.secondary{
         display: flex;
+    }
+}
+
+@media (min-width: 660px){
+    .navSection.mobile{
+        display: none;
     }
 }
 
@@ -63,4 +66,42 @@ header li{
     z-index: -1;
     border-radius: 4px;
     display: block;
+}
+
+#nav-toggle { cursor: pointer; padding: 10px 35px 16px 0px; }
+#nav-toggle span, #nav-toggle span.span-1:before, #nav-toggle span.span-1:after {
+  cursor: pointer;
+  border-radius: 1px;
+  height: 5px;
+  width: 35px;
+  background: white;
+  position: absolute;
+  display: block;
+  content: '';
+}
+#nav-toggle span.span-1:before {
+  top: -10px; 
+}
+#nav-toggle span.span-1:after {
+  bottom: -10px;
+}
+
+#nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+  transition: all 300ms ease-in-out;
+}
+#nav-toggle.active span.span-1 {
+  transform: rotate(-45deg);
+}
+
+#nav-toggle.active span.span-2 {
+  transform: rotate(-140deg);
+}
+#nav-toggle.active span:before, #nav-toggle.active span:after {
+  /*top: 0;*/
+}
+#nav-toggle.active span:before {
+  background-color: transparent;
+}
+#nav-toggle.active span:after {
+  background-color: transparent;
 }

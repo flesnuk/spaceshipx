@@ -7,9 +7,7 @@
         <label for="passwd">Contraseña:</label>
         <input type="password" name="passwd" id="passwd">
         <input type="submit" value="Iniciar sesión">
-        <? if(isset($data["error"])): ?>
-            <span class="error-msg"><?= $data["error"] ?></span>
-        <? endif; ?>
+        <span class="error-msg"><?= $data["error"] ?></span>
         <div id="register">¿Aún no estás registrado? <a href="?module=user&action=register"> Registrate</a></div>
     </form>
 </div>

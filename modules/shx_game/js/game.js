@@ -1,3 +1,4 @@
+function game(){
 var canvas = document.querySelector("canvas");
 
 var c = canvas.getContext("2d");
@@ -183,4 +184,5 @@ setInterval(function() {
         }
             
     
-}, 2000)
+}, 2000);
+}

@@ -35,20 +35,26 @@ function detectores(){
 
 document.addEventListener("DOMContentLoaded", function (){detectores()});
 
-function loadFragment(link, body) {
+function loadFragment(link, callback, body) {
 	body = body || document.querySelector("main");
-
+	
 	var myInit = { method: 'GET'};  
 
 	link.addEventListener("click", function(ev){
 		ev.preventDefault();
-		var myRequest = new Request(ev.target.href + "&vista=fragment", myInit);
+		body.innerHTML = "<img src='http://uploads.webflow.com/56dfccba3d760e08049f42a9/56dfccba3d760e08049f4300_infinite-gif-preloader.gif'></img>"
+		queryParameter = (ev.target.href.indexOf('?') > -1 ? "&vista=fragment" : "?vista=fragment")
+		var myRequest = new Request(ev.target.href + queryParameter, myInit);
 		fetch(myRequest)
 		.then( function(response) {
 			return response.text();    
 		})
-		.then ( function(text){
+		.then ( function(text){			
 			body.innerHTML = text;
+		})
+		.then( function(){
+			if (callback != null)
+				callback();
 		})
 		.catch( function(error) {
 			console.error(error);

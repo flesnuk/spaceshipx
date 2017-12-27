@@ -54,11 +54,11 @@ switch ($action) {
                 $_SESSION["username"] = $user["username"];
                 $_SESSION["is_admin"] = $user["admin"];
                 if ($user["admin"]){
-                    header('Location: ./?module=admin&action=list');
+                    //header('Location: ./?module=admin&action=list');
                 } else {
-                    header('Location: ./');
+                    //header('Location: ./');
                 }
-                die();
+                break;
             } else {
                 $data["error"] = "Contraseña invalida";
             }

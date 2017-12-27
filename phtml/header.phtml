@@ -22,36 +22,48 @@
 	<link rel="stylesheet" href="./css/header.css" type="text/css">
 	<link rel="stylesheet" href="./css/estilo.css" type="text/css">
 	<link rel="stylesheet" href="./css/shop.css" type="text/css">
-	<script src="./js/header.js" async defer></script>
 	<script src="./js/portal.js" async defer></script>
 	<script src='./modules/shx_user/js/user.js' async defer></script>
 	<script src='./modules/shx_shop/js/shop.js' async defer></script>
 	<script src='./modules/shx_game/js/game.js' async defer></script>
+	<script src="./js/header.js" async defer></script>	
 </head>
-<body>
+<body onload="<?php if ($_REQUEST['module'] != null) echo $_REQUEST['module'] . '();';?>">
 	<header>
-		<div class="container">
+		<div>
 			
 			<ul class="navRoot">
 				<li class="navSection logo">
 					<img src="./img/logo_header.png" id="logo" alt="logo" height="50"/>
 				</li>
 				<li class="navSection primary">
-					<a class="rootLink" href="index.php">Inicio</a>
-					<a class="rootLink" href="?module=shop">Tienda</a>
-					<a class="rootLink" href="?module=game">Juego</a>
+					<a id="initLink" class="rootLink" href="index.php">Inicio</a>
+					<a id="shopLink" class="rootLink" href="?module=shop">Tienda</a>
+					<a id="gameLink" class="rootLink" href="?module=game">Juego</a>
 					
 				</li>
 				<li class="navSection secondary">
 					<a class="rootLink" href="">Contacto</a>
-					<a class="rootLink" href="?module=user&action=login">
+					<a id="userLink" class="rootLink" href="?module=user&action=login">
 						<?= $_SESSION["username"] ?? "Iniciar sesión" ?>
+					</a>
+				</li>
+				<li class="navSection mobile">
+					<a id="nav-toggle" href="#">
+						<span class="span-1"></span>
+						<span class="span-2"></span>
 					</a>
 				</li>
 			</ul>
 			
 		</div>
 	</header>
+	<script>
+		document.querySelector( "#nav-toggle" )
+		.addEventListener( "click", function() {
+			this.classList.toggle( "active" );
+		});
+	</script>
 	<main class="content">
 	
 	
