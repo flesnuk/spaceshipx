@@ -1,5 +1,10 @@
 MAX_SIZE_IMG = 1000000;
 
+var mainBody;
+window.onload = function (){
+	mainBody = document.querySelector("main");
+}
+
 function updateImageDisplay(ev){
 	var uploadInput = document.getElementById("upload-input")
 	var curFiles = uploadInput.files
@@ -35,14 +40,13 @@ function detectores(){
 
 document.addEventListener("DOMContentLoaded", function (){detectores()});
 
-function loadFragment(link, callback, body) {
-	body = body || document.querySelector("main");
+function loadFragment(link, callback) {
 	
 	var myInit = { method: 'GET'};  
 
 	link.addEventListener("click", function(ev){
 		ev.preventDefault();
-		body.innerHTML = "<img src='http://uploads.webflow.com/56dfccba3d760e08049f42a9/56dfccba3d760e08049f4300_infinite-gif-preloader.gif'></img>"
+		mainBody.innerHTML = "<img src='http://uploads.webflow.com/56dfccba3d760e08049f42a9/56dfccba3d760e08049f4300_infinite-gif-preloader.gif'></img>"
 		queryParameter = (ev.target.href.indexOf('?') > -1 ? "&vista=fragment" : "?vista=fragment")
 		var myRequest = new Request(ev.target.href + queryParameter, myInit);
 		fetch(myRequest)
@@ -50,7 +54,7 @@ function loadFragment(link, callback, body) {
 			return response.text();    
 		})
 		.then ( function(text){			
-			body.innerHTML = text;
+			mainBody.innerHTML = text;
 		})
 		.then( function(){
 			if (callback != null)

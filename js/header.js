@@ -19,27 +19,31 @@ loadFragment(document.querySelector("#shopLink"), shop);
 loadFragment(document.querySelector("#gameLink"), game);
 loadFragment(document.querySelector("#initLink"));
 
-(function () {
-    var throttle = function (type, name, obj) {
-        obj = obj || window;
-        var running = false;
-        var func = function () {
-            if (running) { return; }
-            running = true;
-            requestAnimationFrame(function () {
-                obj.dispatchEvent(new CustomEvent(name));
-                running = false;
-            });
-        };
-        obj.addEventListener(type, func);
-    };
+// registar un optimizedResize event para poder utilizarlo luego
+// a la hora de detectar cuando se cambia el tamaño del window
+// y asi ajustar la caja que se mueve a traves del menu
+(function() {
 
-    /* init - you can init any event */
-    throttle("resize", "optimizedResize");
-})();
-
-// handle event
-window.addEventListener("optimizedResize", function () {
-    highlight.style.display = 'none';
+    window.addEventListener("resize", resizeThrottler, false);
+  
+    var resizeTimeout;
+    function resizeThrottler() {
+      // ignore resize events as long as an actualResizeHandler execution is in the queue
+      if ( !resizeTimeout ) {
+        resizeTimeout = setTimeout(function() {
+          resizeTimeout = null;
+          actualResizeHandler();
+       
+         // The actualResizeHandler will execute at a rate of 15fps
+         }, 66);
+      }
+    }
+  
+    function actualResizeHandler() {
+      // handle the resize event
+      highlight.style.display = 'none';
     highlight.style.transform = 'translate(0px, 0px)';
-});
+    }
+  
+  }());
+
