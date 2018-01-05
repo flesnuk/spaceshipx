@@ -6,6 +6,7 @@ function user() {
         }
         else {
             document.querySelector('main').innerHTML = "Bienvenido";
+            document.querySelector('#userLink').innerHTML = datos.username;
         }
     };
 

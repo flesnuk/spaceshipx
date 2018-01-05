@@ -6,7 +6,7 @@
 }
 
 .nave {
-    background-color: rgba(55, 55, 55, 0.5);
+    background-color: rgba(55, 55, 55, 0.82);
     border-radius: 7px;
     padding: 20px;
     display:grid;
@@ -32,7 +32,7 @@
 }
 
 .nave .buy {
-    background-color: rgba(55, 55, 55, 0.8);
+    background-color: rgb(23, 74, 187);
     padding: 4px 10px;
     font-weight: 500;
     font-size: 1.2em;
@@ -46,6 +46,7 @@
     font-size: 1.3em;
     align-self: center;
     justify-self: center;
+    margin-right: 5px;
 
 }
 

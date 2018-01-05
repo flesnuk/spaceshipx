@@ -12,8 +12,7 @@ table {
 body {
     display: flex;
     flex-direction: column;
-    background-image: url("../img/backimg-min.jpg");
-    background-size: 2000px 2000px;
+    background-image: url("../img/background.jpg");
    
     font-family: Camphor,Open Sans,Segoe UI,sans-serif;
     color: #DFDDF2;
@@ -49,6 +48,14 @@ a {
 #intro {
     margin: 0px 15px;
     margin-bottom: 86px;
+}
+
+#intro #wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 50px;
+    background: rgba(1, 1, 1, 0.5);
 }
 
 #login {
