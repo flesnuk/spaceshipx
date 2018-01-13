@@ -1,5 +1,5 @@
 <?php
-if ( ! isset($_SESSION["is_admin"]) ) {
+if ( ! isset($_SESSION["username"]) ) {
     header('Location: ./?module=user&action=login');
     die();
 }

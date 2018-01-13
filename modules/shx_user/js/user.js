@@ -5,6 +5,10 @@ function user() {
             document.querySelector('.error-msg').innerHTML = datos.error;
         }
         else {
+            if (datos.redirect){
+                console.log(datos.redirect);                
+                window.location.replace(datos.redirect);
+            }
             document.querySelector('main').innerHTML = "Bienvenido";
             document.querySelector('#userLink').innerHTML = datos.username;
         }

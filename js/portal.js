@@ -46,7 +46,9 @@ function loadFragment(link, callback) {
 
 	link.addEventListener("click", function(ev){
 		ev.preventDefault();
+		// ponemos temporalmente un gif de loading
 		mainBody.innerHTML = "<img src='http://uploads.webflow.com/56dfccba3d760e08049f42a9/56dfccba3d760e08049f4300_infinite-gif-preloader.gif'></img>"
+		// si el enlace ya contiene query parameters, utilizar un & en vez de ?
 		queryParameter = (ev.target.href.indexOf('?') > -1 ? "&vista=fragment" : "?vista=fragment")
 		var myRequest = new Request(ev.target.href + queryParameter, myInit);
 		fetch(myRequest)

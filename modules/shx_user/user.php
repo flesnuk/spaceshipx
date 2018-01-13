@@ -55,6 +55,8 @@ switch ($action) {
                 $_SESSION["is_admin"] = $user["admin"];
                 if ($user["admin"]){
                     //header('Location: ./?module=admin&action=list');
+                    $data["redirect"]="./?module=admin&action=list";
+                    $central = "/modules/shx_admin/phtml/list_users.phtml";
                 } else {
                     //header('Location: ./');
                 }
