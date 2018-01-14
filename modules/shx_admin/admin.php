@@ -10,8 +10,10 @@
  * * @version 1
  * * @link http://dllido.al.nisu.org/P0/holaMundo.php
  * */
-require_once("./modules/shx_guard/admin_guard.php");
-
+if ( ! isset($_SESSION["is_admin"]) ) {
+    header('Location: ./?module=user&action=login');
+    die();
+}
 global $data;
 global $error;
 

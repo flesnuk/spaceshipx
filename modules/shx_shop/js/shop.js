@@ -44,7 +44,7 @@ fetch(myRequest)
     return response.json();    
 })
 .then ( function(json){
-    main(json);
+    main(json.datos);
 })
 .catch( function(error) {
     console.error(error);
